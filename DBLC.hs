@@ -161,7 +161,6 @@ check tr ty =
           else throwError $ "Term does not have correct type."
         (_:g, _) -> local tail $ check (Var (n - 1)) (sub (Var 0) 0 ty)
     Lam aty tr' -> do
-      ctx <- get
       tyw <- nwhnf ty
       case tyw of
         Lam ty1 ty2 -> do
